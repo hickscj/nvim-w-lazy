@@ -13,21 +13,16 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   {
-  'neovim/nvim-lspconfig',
- 
+    'neovim/nvim-lspconfig',
     dependencies = {
-      -- Automatically install LSPs to stdpath for neovim
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
-
-      -- Useful status updates for LSP
       'j-hui/fidget.nvim',
-
-      -- Additional lua configuration, makes nvim stuff amazing
       'folke/neodev.nvim',
-    },
+    }
   },
-  { 
+
+  {
     'hrsh7th/nvim-cmp',
     dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
   },
@@ -40,6 +35,19 @@ require('lazy').setup({
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
     }
+  },
+
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v2.x",
+    dependencies = { 
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+    },
+    keys = {
+      { "<leader>ft", "<cmd>Neotree toggle<cr>", desc = "NeoTree" },
+    },
   },
 
   -- Linting
@@ -133,6 +141,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
+
+require("neo-tree").setup()
 
 -- Set lualine as statusline
 -- See `:help lualine.txt`
