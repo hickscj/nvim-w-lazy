@@ -71,6 +71,7 @@ require('lazy').setup({
   'numToStr/Comment.nvim', -- "gc" to comment visual regions/lines
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
   'luisiacc/gruvbox-baby',
+  { 'catppuccin/nvim', name="catppuccin" },
 
   -- Fuzzy Finder (files, lsp, etc)
   { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
@@ -109,9 +110,14 @@ vim.wo.signcolumn = 'yes'
 vim.g.gruvbox_baby_transparent_mode = 1
 vim.g.gruvbox_baby_telescope_theme = 1
 
+require("catppuccin").setup({
+  flavour = "mocha",
+  transparent_background = true,
+})
+
 -- Set colorscheme
 vim.o.termguicolors = true
-vim.cmd [[colorscheme gruvbox-baby]]
+vim.cmd [[colorscheme catppuccin]]
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -130,6 +136,9 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+-- Window navigation shortcuts
+vim.keymap.set('n', '<C-l>', "<C-w><C-w>", { silent = true })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
