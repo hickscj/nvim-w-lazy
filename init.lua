@@ -138,7 +138,8 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Window navigation shortcuts
-vim.keymap.set('n', '<C-l>', "<C-w><C-w>", { silent = true })
+vim.keymap.set('n', '<C-l>', "<C-w><C-l>", { silent = true })
+vim.keymap.set('n', '<C-h>', "<C-w><C-h>", { silent = true })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
